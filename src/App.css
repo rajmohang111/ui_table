@@ -33,6 +33,7 @@
   width: 32px;
   margin: 24px;
   margin-right: 0;
+  margin-left: 0;
   position: relative;
   /* 
    Child elements with absolute positioning will be 
@@ -47,6 +48,7 @@
   width: 32px;
   margin: 24px;
   margin-right: 0px;
+  margin-left: 0px;
   position: relative;
   /* 
    Child elements with absolute positioning will be 
@@ -79,6 +81,7 @@
   width: 32px;
   margin: 24px;
   margin-right: 0px;
+  margin-left: 0px;
   position: relative;
   /* 
    Child elements with absolute positioning will be 
@@ -86,9 +89,16 @@
   */
 }
 
-header,
+header {
+  display: flex; /* aligns all child elements (flex items) in a row */
+  flex: 1;
+}
+
 .row {
   display: flex; /* aligns all child elements (flex items) in a row */
+  flex: 1;
+  margin-left: 24px;
+  margin-right: 24px;
 }
 
 .col {
@@ -102,6 +112,21 @@ header,
   width: 235px;
   background: #f7f7f7;
   padding: 24px;
+  text-align: left;
+}
+
+.last-col {
+  flex: 1; /* distributes space on the line equally among items */
+  font-family: "AvenirLTStd-Heavy";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  width: 235px;
+  background: #f7f7f7;
+  padding: 24px;
+  padding-right: 48px;
   text-align: left;
 }
 

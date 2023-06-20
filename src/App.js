@@ -12,7 +12,7 @@ function App() {
             Operator <img className="arrow" src={descending} alt="descending" />
           </div>
           <div className="col">Headset Display</div>
-          <div className="col">3G Availability</div>
+          <div className="last-col">3G Availability</div>
         </header>
         <div className="row">
           <div className="iconCell">
