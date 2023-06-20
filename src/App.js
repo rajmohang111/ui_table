@@ -1,23 +1,151 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import descending from "./images/Arrow 1 (Stroke).svg"; // Tell webpack this JS file uses this image
+import tick from "./images/tick.svg"; // Tell webpack this JS file uses this image
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <table>
+        <tr>
+          <th className="empty"></th>
+          <th className="header">
+            Operator
+            <img className="arrow" src={descending} alt="descending" />
+          </th>
+          <th className="header">Headset Display</th>
+          <th className="header">3G Availability</th>
+        </tr>
+        <tr>
+          <td className="empty">
+            <div className="selected-outer-circle">
+              <div className="selected-inner-circle">
+                <span className="inside-content"></span>
+              </div>
+            </div>
+          </td>
+          <td>*Celcom Axiata (LTE)</td>
+          <td>CELCOM / My Celcom / 502 19</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td className="empty">
+            <div className="outer-circle">
+              <div className="inner-circle">
+                <span className="inside-content"></span>
+              </div>
+            </div>
+          </td>
+          <td>*Celcom Axiata (LTE)</td>
+          <td>CELCOM / My Celcom / 502 19</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td className="empty">
+            <div className="selected-outer-checkbox">
+              <div className="inner-circle">
+                <img className="tick" src={tick} alt="tick" />
+              </div>
+            </div>
+          </td>
+          <td>*Celcom Axiata (LTE)</td>
+          <td>CELCOM / My Celcom / 502 19</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td className="empty">
+            <div className="outer-circle">
+              <div className="inner-circle">
+                <span className="inside-content"></span>
+              </div>
+            </div>
+          </td>
+          <td>*Celcom Axiata (LTE)</td>
+          <td>CELCOM / My Celcom / 502 19</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td className="empty">
+            <div className="outer-circle">
+              <div className="inner-circle">
+                <span className="inside-content"></span>
+              </div>
+            </div>
+          </td>
+          <td>*Celcom Axiata (LTE)</td>
+          <td>CELCOM / My Celcom / 502 19</td>
+          <td>Yes</td>
+        </tr>
+        <tr>
+          <td className="empty">
+            <div className="outer-circle">
+              <div className="inner-circle">
+                <span className="inside-content"></span>
+              </div>
+            </div>
+          </td>
+          <td>*Celcom Axiata (LTE)</td>
+          <td>CELCOM / My Celcom / 502 19</td>
+          <td>Yes</td>
+        </tr>
+      </table> */}
+      <section>
+        <header>
+          <div className="noHeader"></div>
+          <div className="col">
+            Operator <img className="arrow" src={descending} alt="descending" />
+          </div>
+          <div className="col">Headset Display</div>
+          <div className="col">3G Availability</div>
+        </header>
+        <div className="row">
+          <div className="iconCell">
+            <div className="selected-outer-circle">
+              <div className="selected-inner-circle">
+                <span className="inside-content"></span>
+              </div>
+            </div>
+          </div>
+          <div className="cell">*Celcom Axiata (LTE)</div>
+          <div className="cell">CELCOM / My Celcom / 502 19</div>
+          <div className="cell">Yes</div>
+        </div>
+        <div className="row">
+          <div className="iconCell">
+            <div className="outer-circle">
+              <div className="inner-circle">
+                <span className="inside-content"></span>
+              </div>
+            </div>
+          </div>
+          <div className="cell">*Celcom Axiata (LTE)</div>
+          <div className="cell">CELCOM / My Celcom / 502 19</div>
+          <div className="cell">Yes</div>
+        </div>
+        <div className="row">
+          <div className="iconCell">
+            <div className="selected-outer-checkbox">
+              <div className="inner-circle">
+                <img className="tick" src={tick} alt="tick" />
+              </div>
+            </div>
+          </div>
+          <div className="cell">*Celcom Axiata (LTE)</div>
+          <div className="cell">CELCOM / My Celcom / 502 19</div>
+          <div className="cell">Yes</div>
+        </div>
+        <div className="row">
+          <div className="iconCell">
+            <div className="selected-outer-circle">
+              <div className="selected-inner-circle">
+                <span className="inside-content"></span>
+              </div>
+            </div>
+          </div>
+          <div className="cell">*Celcom Axiata (LTE)</div>
+          <div className="cell">CELCOM / My Celcom / 502 19</div>
+          <div className="cell">Yes</div>
+        </div>
+      </section>
     </div>
   );
 }

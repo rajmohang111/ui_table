@@ -1,13 +1,30 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: "AvenirLTStd-Heavy";
+  src: local("AvenirLTStd-Heavy"),
+    url(./fonts/Avenir-LT-Std/Avenir-LT-Std-85-Heavy/Avenir\ LT\ Std\ 85\ Heavy.otf)
+      format("opentype");
+}
+
+@font-face {
+  font-family: "AvenirLTStd-Book";
+  src: local("AvenirLTStd-Book"),
+    url(./fonts/Avenir-LT-Std/Avenir-LT-Std-45-Book/Avenir\ LT\ Std\ 45\ Book.otf)
+      format("opentype");
+}
+
+@font-face {
+  font-family: "AvenirLTStd-Roman";
+  src: local("AvenirLTStd-Roman"),
+    url(./fonts/avenir_ff/AvenirLTStd-Roman.otf) format("opentype");
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
