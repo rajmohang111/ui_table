@@ -1,5 +1,5 @@
 import "./App.css";
-import descending from "./images/Arrow 1 (Stroke).svg"; // Tell webpack this JS file uses this image
+import descending from "./images/arrow.svg"; // Tell webpack this JS file uses this image
 import tick from "./images/tick.svg"; // Tell webpack this JS file uses this image
 
 function App() {
