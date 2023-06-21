@@ -1,0 +1,35 @@
+.tick {
+  margin-left: 8px;
+  margin-top: 10px;
+}
+
+.selected-outer-checkbox {
+  background: #5c50bb;
+  border-radius: 8px;
+  height: 32px;
+  width: 32px;
+  margin: 24px;
+  margin-right: 0;
+  margin-left: 0;
+  position: relative;
+  /* 
+   Child elements with absolute positioning will be 
+   positioned relative to this div 
+  */
+}
+
+.unselected-outer-checkbox {
+  background: #ffffff;
+  border-radius: 8px;
+  height: 32px;
+  width: 32px;
+  margin: 24px;
+  margin-right: 0;
+  margin-left: 0;
+  position: relative;
+  border: 1px solid #a8a8a8;
+  /* 
+   Child elements with absolute positioning will be 
+   positioned relative to this div 
+  */
+}

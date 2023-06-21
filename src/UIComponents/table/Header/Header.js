@@ -6,7 +6,7 @@ function Header(props) {
     <header>
       <div className="noHeader"></div>
       {props.labels.map((col, index) => (
-        <div className={col.length === index ? "last-col" : "col"}>
+        <div className={(props.labels.length - 1) === index ? "last-col" : "col"}>
           {col}
           <img className="arrow" src={descending} alt="descending" />
         </div>

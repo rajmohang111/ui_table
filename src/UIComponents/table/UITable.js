@@ -1,25 +1,34 @@
 import "./UItable.css";
-import tick from "../../images/tick.svg"; // Tell webpack this JS file uses this image
 import Header from "./Header/Header";
+import RadioButton from "./RadioButton/RadioButton";
+import Checkbox from "./Checkbox/Checkbox";
+import { useState } from "react";
 
 function UITable(props) {
+  const [tblData, setTblData] = useState(props.data);
+  console.log(tblData);
   return (
     <section>
       <Header labels={props.labels} />
-      {props.data.map((data) => (
-        <div className="row">
-          <div className="iconCell">
-            <div className="selected-outer-circle">
-              <div className="selected-inner-circle">
-                <span className="inside-content"></span>
-              </div>
-            </div>
+      {tblData &&
+        tblData.map((data, index) => (
+          <div className="row">
+            {props.config.selection === "radio" && (
+              <RadioButton
+                data={data}
+                index={index}
+                setData={setTblData}
+                tblData={tblData}
+              />
+            )}
+            {props.config.selection === "checkbox" && (
+              <Checkbox data={data} setData={setTblData} />
+            )}
+            {props.columns.map((col) => (
+              <div className="cell">{data[col]}</div>
+            ))}
           </div>
-          {props.columns.map((col) => (
-            <div className="cell">{data[col]}</div>
-          ))}
-        </div>
-      ))}
+        ))}
       {/* <div className="row">
         <div className="iconCell">
           <div className="selected-outer-circle">
