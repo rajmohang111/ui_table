@@ -1,15 +1,14 @@
+import { memo } from "react";
 import "./RadioButton.css";
 
 function RadioButton(props) {
-  const radioSelect = (e, index) => {
-    console.log(e, index);
-    let res = props.tblData.map((a) => {
-      return { ...a, isSelected: false };
+  const onSelect = (e, index) => {
+    let tmp = props.tblData.map((row) => {
+      return { ...row, isSelected: false };
     });
 
-    res[index].isSelected = true;
-    props.setData(res)
-    console.log(res);
+    tmp[index].isSelected = true;
+    props.updateSelection(tmp);
   };
 
   return (
@@ -18,7 +17,7 @@ function RadioButton(props) {
         className={
           props.data.isSelected ? "selected-outer-circle" : "outer-circle"
         }
-        onClick={(e) => radioSelect(e, props.index)}
+        onClick={(e) => onSelect(e, props.index)}
       >
         {props.data.isSelected && (
           <div className="selected-inner-circle">
@@ -30,4 +29,4 @@ function RadioButton(props) {
   );
 }
 
-export default RadioButton;
+export default memo(RadioButton);

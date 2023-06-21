@@ -1,82 +1,65 @@
-import "./UItable.css";
+import { useState, memo } from "react";
 import Header from "./Header/Header";
 import RadioButton from "./RadioButton/RadioButton";
 import Checkbox from "./Checkbox/Checkbox";
-import { useState } from "react";
+import "./UItable.css";
 
 function UITable(props) {
   const [tblData, setTblData] = useState(props.data);
-  console.log(tblData);
+
+  const updateSelection = (data) => {
+    setTblData(data);
+    props.rowSelect(data);
+  };
+
+  const sortData = (data) => {
+    let tmpTblData = [...data];
+    setTblData(tmpTblData);
+    props.sortedData(tmpTblData);
+  };
+
   return (
     <section>
-      <Header labels={props.labels} />
+      <Header
+        labels={props.labels}
+        config={props.config}
+        sortData={sortData}
+        tblData={tblData}
+        initialData={props.data}
+      />
       {tblData &&
         tblData.map((data, index) => (
-          <div className="row">
+          <div className="row" key={index}>
             {props.config.selection === "radio" && (
               <RadioButton
                 data={data}
                 index={index}
-                setData={setTblData}
+                updateSelection={updateSelection}
                 tblData={tblData}
               />
             )}
             {props.config.selection === "checkbox" && (
-              <Checkbox data={data} setData={setTblData} />
+              <Checkbox
+                data={data}
+                index={index}
+                updateSelection={updateSelection}
+                tblData={tblData}
+              />
             )}
-            {props.columns.map((col) => (
-              <div className="cell">{data[col]}</div>
+            {props.labels.map((col, index) => (
+              <div
+                className={
+                  index === 0 && props.config.selection === null
+                    ? "firstCell"
+                    : "cell"
+                }
+                key={index}
+              >
+                {data[col.field]}
+              </div>
             ))}
           </div>
         ))}
-      {/* <div className="row">
-        <div className="iconCell">
-          <div className="selected-outer-circle">
-            <div className="selected-inner-circle">
-              <span className="inside-content"></span>
-            </div>
-          </div>
-        </div>
-        <div className="cell">*Celcom Axiata (LTE)</div>
-        <div className="cell">CELCOM / My Celcom / 502 19</div>
-        <div className="cell">Yes</div>
-      </div>
-      <div className="row">
-        <div className="iconCell">
-          <div className="outer-circle">
-            <div className="inner-circle">
-              <span className="inside-content"></span>
-            </div>
-          </div>
-        </div>
-        <div className="cell">*Celcom Axiata (LTE)</div>
-        <div className="cell">CELCOM / My Celcom / 502 19</div>
-        <div className="cell">Yes</div>
-      </div>
-      <div className="row">
-        <div className="iconCell">
-          <div className="selected-outer-checkbox">
-            <div className="inner-circle">
-              <img className="tick" src={tick} alt="tick" />
-            </div>
-          </div>
-        </div>
-        <div className="cell">*Celcom Axiata (LTE)</div>
-        <div className="cell">CELCOM / My Celcom / 502 19</div>
-        <div className="cell">Yes</div>
-      </div>
-      <div className="row">
-        <div className="iconCell">
-          <div className="selected-outer-circle">
-            <div className="selected-inner-circle">
-              <span className="inside-content"></span>
-            </div>
-          </div>
-        </div>
-        <div className="cell">*Celcom Axiata (LTE)</div>
-        <div className="cell">CELCOM / My Celcom / 502 19</div>
-        <div className="cell">Yes</div>
-      </div> */}
     </section>
   );
 }
