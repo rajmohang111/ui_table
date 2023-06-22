@@ -3,32 +3,58 @@ import tick from "../../../images/tick.svg"; // Tell webpack this JS file uses t
 import "./Checkbox.css";
 
 function Checkbox(props) {
-  const onSelect = (e, index) => {
-    let tmp = props.tblData.map((row, i) => {
-      if (i === index) {
-        if (row.isSelected) {
+  const onSelect = (index) => {
+    let tmp = [];
+
+    if (index === -1) {
+      if (props.data.isSelected) {
+        props.setSelectAll({ isSelected: false });
+      } else {
+        props.setSelectAll({ isSelected: true });
+      }
+      tmp = props.tblData.map((row) => {
+        if (props.data.isSelected) {
           return { ...row, isSelected: false };
         } else {
           return { ...row, isSelected: true };
         }
+      });
+    } else {
+      tmp = props.tblData.map((row, i) => {
+        if (i === index) {
+          if (row.isSelected) {
+            return { ...row, isSelected: false };
+          } else {
+            return { ...row, isSelected: true };
+          }
+        }
+        return { ...row };
+      });
+      if (tmp.every((element) => element.isSelected === true)) {
+        props.setSelectAll({ isSelected: true });
+      } else {
+        props.setSelectAll({ isSelected: false });
       }
-      return { ...row };
-    });
+    }
     props.updateSelection(tmp);
   };
 
   return (
-    <div className="iconCell">
+    <div className={props.index === -1 ? "" : "iconCell"}>
       <div
         className={
-          props.data.isSelected
-            ? "selected-outer-checkbox"
-            : "unselected-outer-checkbox"
+          props.data?.isSelected
+            ? `selected-outer-checkbox ${
+                props.index === -1 ? "checkbox-all" : "checkbox"
+              }`
+            : `unselected-outer-checkbox ${
+                props.index === -1 ? "checkbox-all" : "checkbox"
+              }`
         }
-        onClick={(e) => onSelect(e, props.index)}
+        onClick={(e) => onSelect(props.index)}
       >
         <div className="inner-circle">
-          {props.data.isSelected ? (
+          {props.data?.isSelected ? (
             <img className="tick" src={tick} alt="tick" />
           ) : (
             <></>

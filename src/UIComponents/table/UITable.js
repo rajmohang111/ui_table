@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState, useCallback, memo } from "react";
 import Header from "./Header/Header";
 import RadioButton from "./RadioButton/RadioButton";
 import Checkbox from "./Checkbox/Checkbox";
@@ -6,17 +6,45 @@ import "./UItable.css";
 
 function UITable(props) {
   const [tblData, setTblData] = useState(props.data);
+  const [selectAll, setSelectAll] = useState({ isSelected: false });
 
-  const updateSelection = (data) => {
-    setTblData(data);
-    props.rowSelect(data);
-  };
+  const updateSelection = useCallback(
+    (data) => {
+      setTblData(data);
+      props.rowSelect(data);
+    },
+    [props.data]
+  );
 
-  const sortData = (data) => {
-    let tmpTblData = [...data];
-    setTblData(tmpTblData);
-    props.sortedData(tmpTblData);
-  };
+  const sortData = useCallback(
+    (config) => {
+      let tmpTblData = [...tblData];
+
+      if (config.sortState === "normal") {
+        tmpTblData.sort((a, b) =>
+          a[config.field] > b[config.field]
+            ? 1
+            : b[config.field] > a[config.field]
+            ? -1
+            : 0
+        );
+      } else if (config.sortState === "asc") {
+        tmpTblData.sort((a, b) =>
+          a[config.field] < b[config.field]
+            ? 1
+            : b[config.field] < a[config.field]
+            ? -1
+            : 0
+        );
+      } else if (config.sortState === "des") {
+        tmpTblData = [...props.data];
+      }
+
+      setTblData(tmpTblData);
+      props.sortedData(tmpTblData);
+    },
+    [props.data]
+  );
 
   return (
     <section>
@@ -24,8 +52,11 @@ function UITable(props) {
         labels={props.labels}
         config={props.config}
         sortData={sortData}
-        tblData={tblData}
+        tblData={props.data}
         initialData={props.data}
+        updateSelection={updateSelection}
+        selectAll={selectAll}
+        setSelectAll={setSelectAll}
       />
       {tblData &&
         tblData.map((data, index) => (
@@ -43,6 +74,7 @@ function UITable(props) {
                 data={data}
                 index={index}
                 updateSelection={updateSelection}
+                setSelectAll={setSelectAll}
                 tblData={tblData}
               />
             )}
@@ -64,4 +96,4 @@ function UITable(props) {
   );
 }
 
-export default UITable;
+export default memo(UITable);

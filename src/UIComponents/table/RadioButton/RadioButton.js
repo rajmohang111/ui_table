@@ -2,7 +2,7 @@ import { memo } from "react";
 import "./RadioButton.css";
 
 function RadioButton(props) {
-  const onSelect = (e, index) => {
+  const onSelect = (index) => {
     let tmp = props.tblData.map((row) => {
       return { ...row, isSelected: false };
     });
@@ -17,7 +17,7 @@ function RadioButton(props) {
         className={
           props.data.isSelected ? "selected-outer-circle" : "outer-circle"
         }
-        onClick={(e) => onSelect(e, props.index)}
+        onClick={() => onSelect(props.index)}
       >
         {props.data.isSelected && (
           <div className="selected-inner-circle">

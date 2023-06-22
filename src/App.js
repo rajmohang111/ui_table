@@ -10,32 +10,52 @@ function App() {
     {
       operator: "BCelcom Axiata (LTE)",
       headsetDisplay: "ACELCOM / My Celcom / 502 19",
-      availability3G: "Yes",
-      isSelected: true,
     },
     {
       operator: "ACelcom Axiata (LTE)",
       headsetDisplay: "BCELCOM / My Celcom / 502 19",
-      availability3G: "Yes",
     },
     {
       operator: "Celcom Axiata (LTE)",
       headsetDisplay: "CELCOM / My Celcom / 502 19",
-      availability3G: "Yes",
     },
     {
       operator: "Delcom Axiata (LTE)",
       headsetDisplay: "DCELCOM / My Celcom / 502 19",
-      availability3G: "Yes",
     },
     {
       operator: "Eelcom Axiata (LTE)",
       headsetDisplay: "ECELCOM / My Celcom / 502 19",
-      availability3G: "Yes",
     },
   ];
 
-  const columns = ["operator", "headsetDisplay", "availability3G"];
+  const data1 = [
+    {
+      destination: "India",
+      mins: 250,
+      rate: "$0.03",
+    },
+    {
+      destination: "AIndia",
+      mins: 250,
+      rate: "$0.03",
+    },
+    {
+      destination: "BIndia",
+      mins: 250,
+      rate: "$0.03",
+    },
+    {
+      destination: "DSIndia",
+      mins: 250,
+      rate: "$0.03",
+    },
+    {
+      destination: "CIndia",
+      mins: 250,
+      rate: "$0.03",
+    },
+  ];
 
   const labels = [
     { label: "Operator", sort: true, sortState: "normal", field: "operator" },
@@ -45,7 +65,22 @@ function App() {
       sortState: "normal",
       field: "headsetDisplay",
     },
-    { label: "3G Availability", sort: false, field: "availability3G" },
+  ];
+
+  const labels1 = [
+    {
+      label: "Destination",
+      sort: true,
+      sortState: "normal",
+      field: "destination",
+    },
+    {
+      label: "Mins",
+      sort: true,
+      sortState: "normal",
+      field: "mins",
+    },
+    { label: "Rate/min", sort: false, field: "rate" },
   ];
 
   const rowSelect = (selectedRow) => {
@@ -79,6 +114,14 @@ function App() {
         data={data}
         labels={labels}
         config={config3}
+        rowSelect={(selection) => rowSelect(selection)}
+        sortedData={(selection) => sortedData(selection)}
+      />
+      <div style={{ height: 100 }}></div>
+      <UITable
+        data={data1}
+        labels={labels1}
+        config={config}
         rowSelect={(selection) => rowSelect(selection)}
         sortedData={(selection) => sortedData(selection)}
       />

@@ -33,3 +33,50 @@
    positioned relative to this div 
   */
 }
+
+@media only screen and (max-width: 700px) {
+  .tick {
+    height: 12px;
+    width: 12px;
+    margin-left: 6px;
+    margin-top: 6px;
+  }
+
+  .checkbox-all {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  .checkbox {
+    margin-top: 8px;
+  }
+
+  .selected-outer-checkbox {
+    background: #5c50bb;
+    border-radius: 8px;
+    height: 24px;
+    width: 24px;
+    margin-right: 0;
+    margin-left: 0;
+    position: relative;
+    /* 
+     Child elements with absolute positioning will be 
+     positioned relative to this div 
+    */
+  }
+
+  .unselected-outer-checkbox {
+    background: #ffffff;
+    border-radius: 8px;
+    height: 24px;
+    width: 24px;
+    margin-right: 0;
+    margin-left: 0;
+    position: relative;
+    border: 1px solid #a8a8a8;
+    /* 
+     Child elements with absolute positioning will be 
+     positioned relative to this div 
+    */
+  }
+}

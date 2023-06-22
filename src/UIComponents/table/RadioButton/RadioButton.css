@@ -1,49 +1,97 @@
-
 .selected-outer-circle {
-    background: #5c50bb;
+  background: #5c50bb;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  margin: 24px;
+  margin-right: 0px;
+  margin-left: 0px;
+  position: relative;
+  /* 
+     Child elements with absolute positioning will be 
+     positioned relative to this div 
+    */
+}
+.selected-inner-circle {
+  position: absolute;
+  background: #f7f7f7;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  /*
+     Put top edge and left edge in the center
+    */
+  top: 50%;
+  left: 50%;
+  margin: -8px 0px 0px -8px;
+  /* 
+     Offset the position correctly with
+     minus half of the width and minus half of the height 
+    */
+}
+
+.outer-circle {
+  border: 1px solid #a8a8a8;
+  background: #ffffff;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  margin: 24px;
+  margin-right: 0px;
+  margin-left: 0px;
+  position: relative;
+  /* 
+     Child elements with absolute positioning will be 
+     positioned relative to this div 
+    */
+}
+
+@media only screen and (max-width: 700px) {
+  .outer-circle {
+    border: 1px solid #a8a8a8;
+    background: #ffffff;
     border-radius: 50%;
-    height: 32px;
-    width: 32px;
-    margin: 24px;
+    height: 24px;
+    width: 24px;
+    margin: 8px;
     margin-right: 0px;
     margin-left: 0px;
     position: relative;
     /* 
-     Child elements with absolute positioning will be 
-     positioned relative to this div 
-    */
+       Child elements with absolute positioning will be 
+       positioned relative to this div 
+      */
+  }
+
+  .selected-outer-circle {
+    background: #5c50bb;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    margin: 8px;
+    margin-right: 0px;
+    margin-left: 0px;
+    position: relative;
+    /* 
+       Child elements with absolute positioning will be 
+       positioned relative to this div 
+      */
   }
   .selected-inner-circle {
     position: absolute;
     background: #f7f7f7;
     border-radius: 50%;
-    height: 16px;
-    width: 16px;
+    height: 12px;
+    width: 12px;
     /*
-     Put top edge and left edge in the center
-    */
+       Put top edge and left edge in the center
+      */
     top: 50%;
     left: 50%;
-    margin: -8px 0px 0px -8px;
+    margin: -6px 0px 0px -6px;
     /* 
-     Offset the position correctly with
-     minus half of the width and minus half of the height 
-    */
+       Offset the position correctly with
+       minus half of the width and minus half of the height 
+      */
   }
-  
-  .outer-circle {
-    border: 1px solid #a8a8a8;
-    background: #ffffff;
-    border-radius: 50%;
-    height: 32px;
-    width: 32px;
-    margin: 24px;
-    margin-right: 0px;
-    margin-left: 0px;
-    position: relative;
-    /* 
-     Child elements with absolute positioning will be 
-     positioned relative to this div 
-    */
-  }
-  
+}
