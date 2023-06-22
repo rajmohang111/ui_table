@@ -1,5 +1,5 @@
 import { memo } from "react";
-import tick from "../../../images/tick.svg"; // Tell webpack this JS file uses this image
+import tick from "../../images/tick.svg"; // Tell webpack this JS file uses this image
 import "./Checkbox.css";
 
 function Checkbox(props) {
@@ -40,7 +40,7 @@ function Checkbox(props) {
   };
 
   return (
-    <div className={props.index === -1 ? "" : "iconCell"}>
+    <div className={props.index === -1 ? "icon" : "iconCell"}>
       <div
         className={
           props.data?.isSelected

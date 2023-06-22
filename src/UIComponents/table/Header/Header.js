@@ -1,5 +1,5 @@
 import { useState, useCallback, memo } from "react";
-import Checkbox from "../Checkbox/Checkbox";
+import Checkbox from "../../Checkbox/Checkbox";
 import descending from "../../../images/arrow.svg";
 import sortingNetural from "../../../images/sortingNetural.svg";
 import SortingUp from "../../../images/SortingUp.svg";

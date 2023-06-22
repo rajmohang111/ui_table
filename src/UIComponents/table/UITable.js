@@ -1,7 +1,7 @@
 import { useState, useCallback, memo } from "react";
 import Header from "./Header/Header";
-import RadioButton from "./RadioButton/RadioButton";
-import Checkbox from "./Checkbox/Checkbox";
+import RadioButton from "../RadioButton/RadioButton";
+import Checkbox from "../Checkbox/Checkbox";
 import "./UItable.css";
 
 function UITable(props) {
