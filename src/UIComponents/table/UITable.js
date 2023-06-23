@@ -48,7 +48,7 @@ function UITable(props) {
   );
 
   return (
-    <section>
+    <section className="table-section">
       <Header
         labels={props.labels}
         config={props.config}

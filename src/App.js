@@ -3,7 +3,7 @@ import UITable from "./UIComponents/table/UITable";
 
 function App() {
   const config = { selection: "radio" };
-  const config2 = { selection: "radio", mobileLayout: "card" };
+  const config2 = { selection: "checkbox", mobileLayout: "card" };
   const config3 = { selection: null, layout: "" };
 
   const data = [

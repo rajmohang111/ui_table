@@ -28,7 +28,7 @@ function Header(props) {
   );
 
   return (
-    <header className="mainHeader">
+    <header>
       {props.config.selection && (
         <div className="noHeader">
           {window.screen.width < 700 &&
@@ -51,7 +51,7 @@ function Header(props) {
         labels.map((col, index) => (
           <div
             key={index}
-            className={props.labels.length - 1 === index ? "last-col" : "col"}
+            className={props.labels.length - 1 === index ? "last-col" : `col ${props.config.selection === null && index === 0 && "first-cell"}`}
           >
             {col.label}
             {window.screen.width > 700 &&
@@ -92,7 +92,7 @@ function Header(props) {
         labels.map((col, index) => (
           <div
             key={index}
-            className={props.labels.length - 1 === index ? "last-col" : "col"}
+            className={props.labels.length - 1 === index ? "last-col" : `col ${props.config.selection === null && index === 0 && "border-radius"}`}
           >
             {col.label}
             {window.screen.width > 700 &&

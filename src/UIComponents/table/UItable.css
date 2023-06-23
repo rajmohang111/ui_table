@@ -39,6 +39,11 @@ header {
   padding-left: 0px;
 }
 
+.table-section {
+  border-radius: 16px;
+  box-shadow: 0px 3px 8px 0px #0000001F;
+}
+
 @media only screen and (max-width: 700px) {
   .row {
     display: flex; /* aligns all child elements (flex items) in a row */

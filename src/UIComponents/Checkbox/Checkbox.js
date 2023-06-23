@@ -40,7 +40,7 @@ function Checkbox(props) {
   };
 
   return (
-    <div className={props.index === -1 ? "icon" : "iconCell"}>
+    <div className={props.index === -1 ? `icon ${props.tblData.length - 1 === props.index && "noDivider"}` : `iconCell ${props.tblData.length - 1 === props.index && "noDivider"}`}>
       <div
         className={
           props.data?.isSelected

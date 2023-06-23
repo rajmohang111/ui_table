@@ -11,6 +11,7 @@
   padding: 24px;
   padding-right: 48px;
   text-align: left;
+  border-top-right-radius: 16px;
 }
 
 .col {
@@ -31,6 +32,11 @@
   background: #f7f7f7;
   padding: 24px;
   width: 8px;
+  border-top-left-radius: 16px;
+}
+
+.border-radius{
+  border-top-left-radius: 16px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -81,6 +87,7 @@
     padding-top: 8px;
     padding-bottom: 8px;
     text-align: left;
+    border-top-right-radius: 16px;
   }
 
   .last-col {
