@@ -2,6 +2,7 @@ import { useState, useCallback, memo } from "react";
 import Header from "./Header/Header";
 import RadioButton from "../RadioButton/RadioButton";
 import Checkbox from "../Checkbox/Checkbox";
+import Card from "../Card/Card";
 import "./UItable.css";
 
 function UITable(props) {
@@ -78,18 +79,29 @@ function UITable(props) {
                 tblData={tblData}
               />
             )}
-            {props.labels.map((col, index) => (
-              <div
-                className={
-                  index === 0 && props.config.selection === null
-                    ? "firstCell"
-                    : "cell"
-                }
-                key={index}
-              >
-                {data[col.field]}
-              </div>
-            ))}
+            {(window.screen.width > 700 ||
+              (props.config.mobileLayout !== "card" &&
+                window.screen.width < 700)) &&
+              props.labels.map((col, i) => (
+                <div
+                  className={
+                    i === 0 && props.config.selection === null
+                      ? `firstCell ${tblData.length - 1 === index && "noDivider"}`
+                      : `cell ${tblData.length - 1 === index && "noDivider"}`
+                  }
+                  key={i}
+                >
+                  {data[col.field]}
+                </div>
+              ))}
+            {props.config.mobileLayout === "card" &&
+              window.screen.width < 700 && (
+                <Card
+                  labels={props.labels}
+                  data={data}
+                  lastRecord={tblData.length - 1 === index}
+                />
+              )}
           </div>
         ))}
     </section>

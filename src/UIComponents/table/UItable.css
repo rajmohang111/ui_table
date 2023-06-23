@@ -80,6 +80,10 @@ header {
     padding-bottom: 8px;
   }
 
+  .noDivider {
+    border-bottom: 0px;
+  }
+
   .icon {
     text-align: left;
   }
@@ -89,4 +93,8 @@ header {
 .iconCell {
   border-bottom: 1px solid #e1e1e1;
   text-align: left;
+}
+
+.noDivider {
+  border-bottom: 0px;
 }

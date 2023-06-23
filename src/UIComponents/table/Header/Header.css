@@ -36,7 +36,7 @@
 @media only screen and (max-width: 700px) {
   header {
     display: flex;
-    align-items: center;
+    align-items: stretch;
   }
 
   .empty {
@@ -49,10 +49,25 @@
     padding-right: 16px;
     padding-top: 8px;
     padding-bottom: 8px;
-    height: 24px;
   }
 
   .col {
+    flex: 1; /* distributes space on the line equally among items */
+    font-family: "AvenirLTStd-Heavy";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+    background: #f7f7f7;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: left;
+  }
+
+  .table-title {
     flex: 1; /* distributes space on the line equally among items */
     font-family: "AvenirLTStd-Heavy";
     font-style: normal;

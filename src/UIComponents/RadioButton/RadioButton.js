@@ -12,7 +12,7 @@ function RadioButton(props) {
   };
 
   return (
-    <div className="iconCell">
+    <div className={props.tblData.length - 1 === props.index ? "iconCell noDivider" : "iconCell"}>
       <div
         className={
           props.data.isSelected ? "selected-outer-circle" : "outer-circle"

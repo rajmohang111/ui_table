@@ -28,7 +28,7 @@ function Header(props) {
   );
 
   return (
-    <header>
+    <header className="mainHeader">
       {props.config.selection && (
         <div className="noHeader">
           {window.screen.width < 700 &&
@@ -42,11 +42,12 @@ function Header(props) {
               />
             )}
           {window.screen.width < 700 && props.config.selection === "radio" && (
-            <div className="empty"></div>
+            <></>
           )}
         </div>
       )}
-      {labels &&
+      {window.screen.width > 700 &&
+        labels &&
         labels.map((col, index) => (
           <div
             key={index}
@@ -85,6 +86,50 @@ function Header(props) {
               )}
           </div>
         ))}
+      {props.config.mobileLayout !== "card" &&
+        window.screen.width < 700 &&
+        labels &&
+        labels.map((col, index) => (
+          <div
+            key={index}
+            className={props.labels.length - 1 === index ? "last-col" : "col"}
+          >
+            {col.label}
+            {window.screen.width > 700 &&
+              col.sort &&
+              col.sortState === "normal" && (
+                <img
+                  className="arrow"
+                  src={sortingNetural}
+                  alt="sortingNetural"
+                  onClick={() => sortData(col, index)}
+                />
+              )}
+            {window.screen.width > 700 &&
+              col.sort &&
+              col.sortState === "des" && (
+                <img
+                  className="arrow"
+                  src={descending}
+                  alt="descending"
+                  onClick={() => sortData(col, index)}
+                />
+              )}
+            {window.screen.width > 700 &&
+              col.sort &&
+              col.sortState === "asc" && (
+                <img
+                  className="arrow"
+                  src={SortingUp}
+                  alt="SortingUp"
+                  onClick={() => sortData(col, index)}
+                />
+              )}
+          </div>
+        ))}
+      {props.config.mobileLayout === "card" && window.screen.width < 700 && (
+        <div className="table-title">Contract Details</div>
+      )}
     </header>
   );
 }

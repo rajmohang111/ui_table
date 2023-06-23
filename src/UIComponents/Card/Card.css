@@ -1,0 +1,42 @@
+@media only screen and (max-width: 700px) {
+  .cellWrap {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card-cell-key {
+    font-family: "AvenirLTStd-Heavy";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000000;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .card-cell {
+    font-family: "AvenirLTStd-Book";
+    font-style: normal;
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.001em;
+    color: #000000;
+    text-align: left;
+    padding: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .divider {
+    border-bottom: 1px solid #e1e1e1;
+  }
+
+  .data-wrap{
+    display: flex;
+  }
+}

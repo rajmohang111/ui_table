@@ -3,29 +3,35 @@ import UITable from "./UIComponents/table/UITable";
 
 function App() {
   const config = { selection: "radio" };
-  const config2 = { selection: "checkbox" };
-  const config3 = { selection: null };
+  const config2 = { selection: "radio", mobileLayout: "card" };
+  const config3 = { selection: null, layout: "" };
 
   const data = [
     {
       operator: "BCelcom Axiata (LTE)",
       headsetDisplay: "ACELCOM / My Celcom / 502 19",
+      availability3G: "Yes",
+      isSelected: true,
     },
     {
       operator: "ACelcom Axiata (LTE)",
       headsetDisplay: "BCELCOM / My Celcom / 502 19",
+      availability3G: "Yes",
     },
     {
       operator: "Celcom Axiata (LTE)",
       headsetDisplay: "CELCOM / My Celcom / 502 19",
+      availability3G: "Yes",
     },
     {
       operator: "Delcom Axiata (LTE)",
       headsetDisplay: "DCELCOM / My Celcom / 502 19",
+      availability3G: "Yes",
     },
     {
       operator: "Eelcom Axiata (LTE)",
       headsetDisplay: "ECELCOM / My Celcom / 502 19",
+      availability3G: "Yes",
     },
   ];
 
@@ -57,6 +63,51 @@ function App() {
     },
   ];
 
+  const data2 = [
+    {
+      name: "ACelcom Axiata",
+      mobile: "99999999",
+      expiry: "Dec 2022",
+      penalty: "$600",
+    },
+    {
+      name: "BCelcom Axiata",
+      mobile: "99999999",
+      expiry: "Dec 2022",
+      penalty: "$600",
+    },
+    {
+      name: "CCelcom Axiata",
+      mobile: "99999999",
+      expiry: "Dec 2022",
+      penalty: "$600",
+    },
+    {
+      name: "DCelcom Axiata",
+      mobile: "99999999",
+      expiry: "Dec 2022",
+      penalty: "$600",
+    },
+    {
+      name: "ECelcom Axiata",
+      mobile: "99999999",
+      expiry: "Dec 2022",
+      penalty: "$600",
+    },
+  ];
+
+  const labels2 = [
+    { label: "Name", sort: true, sortState: "normal", field: "name" },
+    {
+      label: "Mobile",
+      sort: true,
+      sortState: "normal",
+      field: "mobile",
+    },
+    { label: "Expiry", sort: false, field: "expiry" },
+    { label: "Penalty", sort: false, field: "penalty" },
+  ];
+
   const labels = [
     { label: "Operator", sort: true, sortState: "normal", field: "operator" },
     {
@@ -65,6 +116,7 @@ function App() {
       sortState: "normal",
       field: "headsetDisplay",
     },
+    { label: "3G Availability", sort: false, field: "availability3G" },
   ];
 
   const labels1 = [
@@ -95,6 +147,14 @@ function App() {
     <div className="App">
       <div style={{ height: 100 }}></div>
       <UITable
+        data={data2}
+        labels={labels2}
+        config={config2}
+        rowSelect={(selection) => rowSelect(selection)}
+        sortedData={(selection) => sortedData(selection)}
+      />
+      <div style={{ height: 100 }}></div>
+      <UITable
         data={data}
         labels={labels}
         config={config}
@@ -105,7 +165,7 @@ function App() {
       <UITable
         data={data}
         labels={labels}
-        config={config2}
+        config={config}
         rowSelect={(selection) => rowSelect(selection)}
         sortedData={(selection) => sortedData(selection)}
       />
@@ -125,6 +185,7 @@ function App() {
         rowSelect={(selection) => rowSelect(selection)}
         sortedData={(selection) => sortedData(selection)}
       />
+      <div style={{ height: 100 }}></div>
     </div>
   );
 }
