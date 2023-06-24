@@ -1,4 +1,6 @@
-import { useState, useCallback, memo } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
+import { PropTypes } from "prop-types";
+
 import Header from "./Header/Header";
 import RadioButton from "../RadioButton/RadioButton";
 import Checkbox from "../Checkbox/Checkbox";
@@ -8,6 +10,18 @@ import "./UItable.css";
 function UITable(props) {
   const [tblData, setTblData] = useState(props.data);
   const [selectAll, setSelectAll] = useState({ isSelected: false });
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const setWindowDimensions = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", setWindowDimensions);
+    return () => {
+      window.removeEventListener("resize", setWindowDimensions);
+    };
+  }, []);
 
   const updateSelection = useCallback(
     (data) => {
@@ -58,6 +72,7 @@ function UITable(props) {
         updateSelection={updateSelection}
         selectAll={selectAll}
         setSelectAll={setSelectAll}
+        windowWidth={windowWidth}
       />
       {tblData &&
         tblData.map((data, index) => (
@@ -79,14 +94,15 @@ function UITable(props) {
                 tblData={tblData}
               />
             )}
-            {(window.screen.width > 700 ||
-              (props.config.mobileLayout !== "card" &&
-                window.screen.width < 700)) &&
+            {(windowWidth > 700 ||
+              (props.config.mobileLayout !== "card" && windowWidth < 700)) &&
               props.labels.map((col, i) => (
                 <div
                   className={
                     i === 0 && props.config.selection === null
-                      ? `firstCell ${tblData.length - 1 === index && "noDivider"}`
+                      ? `firstCell ${
+                          tblData.length - 1 === index && "noDivider"
+                        }`
                       : `cell ${tblData.length - 1 === index && "noDivider"}`
                   }
                   key={i}
@@ -94,18 +110,28 @@ function UITable(props) {
                   {data[col.field]}
                 </div>
               ))}
-            {props.config.mobileLayout === "card" &&
-              window.screen.width < 700 && (
-                <Card
-                  labels={props.labels}
-                  data={data}
-                  lastRecord={tblData.length - 1 === index}
-                />
-              )}
+            {props.config.mobileLayout === "card" && windowWidth < 700 && (
+              <Card
+                labels={props.labels}
+                data={data}
+                lastRecord={tblData.length - 1 === index}
+              />
+            )}
           </div>
         ))}
     </section>
   );
 }
+
+UITable.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  labels: PropTypes.arrayOf(PropTypes.object),
+  config: PropTypes.shape({
+    selection: PropTypes.oneOf(["radio", "checkbox", null]),
+    mobileLayout: PropTypes.oneOf(["card", null]),
+  }),
+  rowSelect: PropTypes.func,
+  sortedData: PropTypes.func,
+};
 
 export default memo(UITable);

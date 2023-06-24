@@ -31,7 +31,7 @@ function Header(props) {
     <header>
       {props.config.selection && (
         <div className="noHeader">
-          {window.screen.width < 700 &&
+          {props.windowWidth < 700 &&
             props.config.selection === "checkbox" && (
               <Checkbox
                 data={props.selectAll}
@@ -41,12 +41,12 @@ function Header(props) {
                 tblData={props.tblData}
               />
             )}
-          {window.screen.width < 700 && props.config.selection === "radio" && (
+          {props.windowWidth < 700 && props.config.selection === "radio" && (
             <></>
           )}
         </div>
       )}
-      {window.screen.width > 700 &&
+      {props.windowWidth > 700 &&
         labels &&
         labels.map((col, index) => (
           <div
@@ -54,7 +54,7 @@ function Header(props) {
             className={props.labels.length - 1 === index ? "last-col" : `col ${props.config.selection === null && index === 0 && "first-cell"}`}
           >
             {col.label}
-            {window.screen.width > 700 &&
+            {props.windowWidth > 700 &&
               col.sort &&
               col.sortState === "normal" && (
                 <img
@@ -64,7 +64,7 @@ function Header(props) {
                   onClick={() => sortData(col, index)}
                 />
               )}
-            {window.screen.width > 700 &&
+            {props.windowWidth > 700 &&
               col.sort &&
               col.sortState === "des" && (
                 <img
@@ -74,7 +74,7 @@ function Header(props) {
                   onClick={() => sortData(col, index)}
                 />
               )}
-            {window.screen.width > 700 &&
+            {props.windowWidth > 700 &&
               col.sort &&
               col.sortState === "asc" && (
                 <img
@@ -87,7 +87,7 @@ function Header(props) {
           </div>
         ))}
       {props.config.mobileLayout !== "card" &&
-        window.screen.width < 700 &&
+        props.windowWidth < 700 &&
         labels &&
         labels.map((col, index) => (
           <div
@@ -95,7 +95,7 @@ function Header(props) {
             className={props.labels.length - 1 === index ? "last-col" : `col ${props.config.selection === null && index === 0 && "border-radius"}`}
           >
             {col.label}
-            {window.screen.width > 700 &&
+            {props.windowWidth > 700 &&
               col.sort &&
               col.sortState === "normal" && (
                 <img
@@ -105,7 +105,7 @@ function Header(props) {
                   onClick={() => sortData(col, index)}
                 />
               )}
-            {window.screen.width > 700 &&
+            {props.windowWidth > 700 &&
               col.sort &&
               col.sortState === "des" && (
                 <img
@@ -115,7 +115,7 @@ function Header(props) {
                   onClick={() => sortData(col, index)}
                 />
               )}
-            {window.screen.width > 700 &&
+            {props.windowWidth > 700 &&
               col.sort &&
               col.sortState === "asc" && (
                 <img
@@ -127,7 +127,7 @@ function Header(props) {
               )}
           </div>
         ))}
-      {props.config.mobileLayout === "card" && window.screen.width < 700 && (
+      {props.config.mobileLayout === "card" && props.windowWidth < 700 && (
         <div className="table-title">Contract Details</div>
       )}
     </header>

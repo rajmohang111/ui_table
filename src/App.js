@@ -1,10 +1,10 @@
 import "./App.css";
-import UITable from "./UIComponents/table/UITable";
+import UITable from "./UIComponents/UITable/UITable";
 
 function App() {
-  const config = { selection: "radio" };
+  const config = { selection: "radio", mobileLayout: null };
   const config2 = { selection: "checkbox", mobileLayout: "card" };
-  const config3 = { selection: null, layout: "" };
+  const config3 = { selection: null, mobileLayout: null };
 
   const data = [
     {
