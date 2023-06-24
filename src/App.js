@@ -2,9 +2,21 @@ import "./App.css";
 import UITable from "./UIComponents/UITable/UITable";
 
 function App() {
-  const config = { selection: "radio", mobileLayout: null };
-  const config2 = { selection: "checkbox", mobileLayout: "card" };
-  const config3 = { selection: null, mobileLayout: null };
+  const config = {
+    selection: "radio",
+    mobileLayout: null,
+    tableTitle: "UI Table",
+  };
+  const config2 = {
+    selection: "checkbox",
+    mobileLayout: "card",
+    tableTitle: "UI Table",
+  };
+  const config3 = {
+    selection: null,
+    mobileLayout: null,
+    tableTitle: "UI Table",
+  };
 
   const data = [
     {

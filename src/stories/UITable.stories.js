@@ -34,7 +34,6 @@ const data1 = [
   },
 ];
 
-
 const data2 = [
   {
     name: "ACelcom Axiata",
@@ -90,7 +89,11 @@ const labels2 = [
   { label: "Penalty", sort: false, field: "penalty" },
 ];
 
-const config2 = { selection: "checkbox", mobileLayout: "card" };
+const config2 = {
+  selection: "checkbox",
+  mobileLayout: "card",
+  tableTitle: "UI Table",
+};
 
 export const TableWithCheckbox = Template.bind({});
 
@@ -100,7 +103,11 @@ TableWithCheckbox.args = {
   config: config2,
 };
 
-const config1 = { selection: "radio", mobileLayout: "card" };
+const config1 = {
+  selection: "radio",
+  mobileLayout: "card",
+  tableTitle: "UI Table",
+};
 
 export const TableWithRadioButton = Template.bind({});
 
@@ -110,7 +117,11 @@ TableWithRadioButton.args = {
   config: config1,
 };
 
-const config = { selection: null, mobileLayout: "card" };
+const config = {
+  selection: null,
+  mobileLayout: "card",
+  tableTitle: "UI Table",
+};
 
 export const TableWithoutSelection = Template.bind({});
 

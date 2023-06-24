@@ -40,15 +40,27 @@ function Checkbox(props) {
   };
 
   return (
-    <div className={props.index === -1 ? `icon ${props.tblData.length - 1 === props.index && "noDivider"}` : `iconCell ${props.tblData.length - 1 === props.index && "noDivider"}`}>
+    <div
+      className={
+        props.index === -1
+          ? `icon ${props.tblData.length - 1 === props.index && "noDivider"}`
+          : `iconCell ${
+              props.tblData.length - 1 === props.index && "noDivider"
+            }`
+      }
+    >
       <div
         className={
           props.data?.isSelected
             ? `selected-outer-checkbox ${
                 props.index === -1 ? "checkbox-all" : "checkbox"
+              } ${
+                props.index === -1 && props.windowWidth > 700 && "zero-margin"
               }`
             : `unselected-outer-checkbox ${
                 props.index === -1 ? "checkbox-all" : "checkbox"
+              } ${
+                props.index === -1 && props.windowWidth > 700 && "zero-margin"
               }`
         }
         onClick={(e) => onSelect(props.index)}

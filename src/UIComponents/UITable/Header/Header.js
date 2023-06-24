@@ -6,6 +6,7 @@ import SortingUp from "../../../images/SortingUp.svg";
 import "./Header.css";
 
 function Header(props) {
+  const { sortData: propsSortData } = props;
   const [labels, setLabels] = useState(props.labels);
 
   const sortData = useCallback(
@@ -21,26 +22,26 @@ function Header(props) {
       } else if (config.sortState === "des") {
         tmpLabels[index].sortState = "normal";
       }
-      props.sortData(config);
+      propsSortData(config);
       setLabels(tmpLabels);
     },
-    [props.labels]
+    [propsSortData, labels]
   );
 
   return (
     <header>
       {props.config.selection && (
         <div className="noHeader">
-          {props.windowWidth < 700 &&
-            props.config.selection === "checkbox" && (
-              <Checkbox
-                data={props.selectAll}
-                index={-1}
-                updateSelection={(data) => props.updateSelection(data)}
-                setSelectAll={props.setSelectAll}
-                tblData={props.tblData}
-              />
-            )}
+          {props.config.selection === "checkbox" && (
+            <Checkbox
+              data={props.selectAll}
+              index={-1}
+              updateSelection={(data) => props.updateSelection(data)}
+              setSelectAll={props.setSelectAll}
+              tblData={props.tblData}
+              windowWidth={props.windowWidth}
+            />
+          )}
           {props.windowWidth < 700 && props.config.selection === "radio" && (
             <></>
           )}
@@ -51,7 +52,15 @@ function Header(props) {
         labels.map((col, index) => (
           <div
             key={index}
-            className={props.labels.length - 1 === index ? "last-col" : `col ${props.config.selection === null && index === 0 && "first-cell"}`}
+            className={
+              props.labels.length - 1 === index
+                ? "last-col"
+                : `col ${
+                    props.config.selection === null &&
+                    index === 0 &&
+                    "first-cell"
+                  }`
+            }
           >
             {col.label}
             {props.windowWidth > 700 &&
@@ -64,26 +73,22 @@ function Header(props) {
                   onClick={() => sortData(col, index)}
                 />
               )}
-            {props.windowWidth > 700 &&
-              col.sort &&
-              col.sortState === "des" && (
-                <img
-                  className="arrow"
-                  src={descending}
-                  alt="descending"
-                  onClick={() => sortData(col, index)}
-                />
-              )}
-            {props.windowWidth > 700 &&
-              col.sort &&
-              col.sortState === "asc" && (
-                <img
-                  className="arrow"
-                  src={SortingUp}
-                  alt="SortingUp"
-                  onClick={() => sortData(col, index)}
-                />
-              )}
+            {props.windowWidth > 700 && col.sort && col.sortState === "des" && (
+              <img
+                className="arrow"
+                src={descending}
+                alt="descending"
+                onClick={() => sortData(col, index)}
+              />
+            )}
+            {props.windowWidth > 700 && col.sort && col.sortState === "asc" && (
+              <img
+                className="arrow"
+                src={SortingUp}
+                alt="SortingUp"
+                onClick={() => sortData(col, index)}
+              />
+            )}
           </div>
         ))}
       {props.config.mobileLayout !== "card" &&
@@ -92,7 +97,15 @@ function Header(props) {
         labels.map((col, index) => (
           <div
             key={index}
-            className={props.labels.length - 1 === index ? "last-col" : `col ${props.config.selection === null && index === 0 && "border-radius"}`}
+            className={
+              props.labels.length - 1 === index
+                ? "last-col"
+                : `col ${
+                    props.config.selection === null &&
+                    index === 0 &&
+                    "border-radius"
+                  }`
+            }
           >
             {col.label}
             {props.windowWidth > 700 &&
@@ -105,30 +118,26 @@ function Header(props) {
                   onClick={() => sortData(col, index)}
                 />
               )}
-            {props.windowWidth > 700 &&
-              col.sort &&
-              col.sortState === "des" && (
-                <img
-                  className="arrow"
-                  src={descending}
-                  alt="descending"
-                  onClick={() => sortData(col, index)}
-                />
-              )}
-            {props.windowWidth > 700 &&
-              col.sort &&
-              col.sortState === "asc" && (
-                <img
-                  className="arrow"
-                  src={SortingUp}
-                  alt="SortingUp"
-                  onClick={() => sortData(col, index)}
-                />
-              )}
+            {props.windowWidth > 700 && col.sort && col.sortState === "des" && (
+              <img
+                className="arrow"
+                src={descending}
+                alt="descending"
+                onClick={() => sortData(col, index)}
+              />
+            )}
+            {props.windowWidth > 700 && col.sort && col.sortState === "asc" && (
+              <img
+                className="arrow"
+                src={SortingUp}
+                alt="SortingUp"
+                onClick={() => sortData(col, index)}
+              />
+            )}
           </div>
         ))}
       {props.config.mobileLayout === "card" && props.windowWidth < 700 && (
-        <div className="table-title">Contract Details</div>
+        <div className="table-title">{props.config.tableTitle}</div>
       )}
     </header>
   );

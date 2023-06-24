@@ -7,8 +7,8 @@ import Checkbox from "../Checkbox/Checkbox";
 import Card from "../Card/Card";
 import "./UItable.css";
 
-function UITable(props) {
-  const [tblData, setTblData] = useState(props.data);
+function UITable({ data: tbldata, rowSelect, sortedData, labels, config }) {
+  const [tblData, setTblData] = useState(tbldata);
   const [selectAll, setSelectAll] = useState({ isSelected: false });
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -26,9 +26,9 @@ function UITable(props) {
   const updateSelection = useCallback(
     (data) => {
       setTblData(data);
-      props.rowSelect(data);
+      rowSelect(data);
     },
-    [props.data]
+    [rowSelect]
   );
 
   const sortData = useCallback(
@@ -52,23 +52,23 @@ function UITable(props) {
             : 0
         );
       } else if (config.sortState === "des") {
-        tmpTblData = [...props.data];
+        tmpTblData = [...tbldata];
       }
 
       setTblData(tmpTblData);
-      props.sortedData(tmpTblData);
+      sortedData(tmpTblData);
     },
-    [props.data]
+    [tblData, sortedData, tbldata]
   );
 
   return (
     <section className="table-section">
       <Header
-        labels={props.labels}
-        config={props.config}
+        labels={labels}
+        config={config}
         sortData={sortData}
-        tblData={props.data}
-        initialData={props.data}
+        tblData={tbldata}
+        initialData={tbldata}
         updateSelection={updateSelection}
         selectAll={selectAll}
         setSelectAll={setSelectAll}
@@ -77,7 +77,7 @@ function UITable(props) {
       {tblData &&
         tblData.map((data, index) => (
           <div className="row" key={index}>
-            {props.config.selection === "radio" && (
+            {config.selection === "radio" && (
               <RadioButton
                 data={data}
                 index={index}
@@ -85,7 +85,7 @@ function UITable(props) {
                 tblData={tblData}
               />
             )}
-            {props.config.selection === "checkbox" && (
+            {config.selection === "checkbox" && (
               <Checkbox
                 data={data}
                 index={index}
@@ -95,11 +95,11 @@ function UITable(props) {
               />
             )}
             {(windowWidth > 700 ||
-              (props.config.mobileLayout !== "card" && windowWidth < 700)) &&
-              props.labels.map((col, i) => (
+              (config.mobileLayout !== "card" && windowWidth < 700)) &&
+              labels.map((col, i) => (
                 <div
                   className={
-                    i === 0 && props.config.selection === null
+                    i === 0 && config.selection === null
                       ? `firstCell ${
                           tblData.length - 1 === index && "noDivider"
                         }`
@@ -110,9 +110,9 @@ function UITable(props) {
                   {data[col.field]}
                 </div>
               ))}
-            {props.config.mobileLayout === "card" && windowWidth < 700 && (
+            {config.mobileLayout === "card" && windowWidth < 700 && (
               <Card
-                labels={props.labels}
+                labels={labels}
                 data={data}
                 lastRecord={tblData.length - 1 === index}
               />
@@ -124,14 +124,15 @@ function UITable(props) {
 }
 
 UITable.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object),
-  labels: PropTypes.arrayOf(PropTypes.object),
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  labels: PropTypes.arrayOf(PropTypes.object).isRequired,
   config: PropTypes.shape({
     selection: PropTypes.oneOf(["radio", "checkbox", null]),
     mobileLayout: PropTypes.oneOf(["card", null]),
-  }),
-  rowSelect: PropTypes.func,
-  sortedData: PropTypes.func,
+    tableTitle: PropTypes.string.isRequired,
+  }).isRequired,
+  rowSelect: PropTypes.func.isRequired,
+  sortedData: PropTypes.func.isRequired,
 };
 
 export default memo(UITable);
