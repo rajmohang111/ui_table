@@ -6,7 +6,7 @@ import RadioButton from "../RadioButton/RadioButton";
 import Checkbox from "../Checkbox/Checkbox";
 import Card from "../Card/Card";
 import { sort } from "../../utility/common";
-import "./UITable.css";
+import "./Table.css";
 
 function UITable({ data: tbldata, rowSelect, sortedData, labels, config }) {
   const [tblData, setTblData] = useState(tbldata);

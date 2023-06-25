@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react";
-import UITable from "./UITable";
+import UITable from "./Table";
 
 const data2 = [
   {

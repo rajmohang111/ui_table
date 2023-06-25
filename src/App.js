@@ -1,5 +1,5 @@
 import "./App.css";
-import UITable from "./UIComponents/UITable/UITable";
+import UITable from "./UIComponents/UITable/Table";
 
 function App() {
   const config = {

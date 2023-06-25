@@ -1,4 +1,4 @@
-import UITable from "../UIComponents/UITable/UITable";
+import UITable from "../UIComponents/UITable/Table";
 
 export default {
   title: "Components/UITable",
