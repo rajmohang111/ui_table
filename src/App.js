@@ -77,7 +77,7 @@ function App() {
 
   const data2 = [
     {
-      name: "ACelcom Axiata",
+      name: "Celcom Axiata",
       mobile: "99999999",
       expiry: "Dec 2022",
       penalty: "$600",
@@ -89,7 +89,7 @@ function App() {
       penalty: "$600",
     },
     {
-      name: "CCelcom Axiata",
+      name: "ACelcom Axiata",
       mobile: "99999999",
       expiry: "Dec 2022",
       penalty: "$600",

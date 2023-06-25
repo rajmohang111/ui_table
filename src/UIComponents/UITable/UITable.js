@@ -5,6 +5,7 @@ import Header from "./Header/Header";
 import RadioButton from "../RadioButton/RadioButton";
 import Checkbox from "../Checkbox/Checkbox";
 import Card from "../Card/Card";
+import { sort } from "../../utility/common";
 import "./UITable.css";
 
 function UITable({ data: tbldata, rowSelect, sortedData, labels, config }) {
@@ -33,32 +34,12 @@ function UITable({ data: tbldata, rowSelect, sortedData, labels, config }) {
 
   const sortData = useCallback(
     (config) => {
-      let tmpTblData = [...tblData];
-
-      if (config.sortState === "normal") {
-        tmpTblData.sort((a, b) =>
-          a[config.field] > b[config.field]
-            ? 1
-            : b[config.field] > a[config.field]
-            ? -1
-            : 0
-        );
-      } else if (config.sortState === "asc") {
-        tmpTblData.sort((a, b) =>
-          a[config.field] < b[config.field]
-            ? 1
-            : b[config.field] < a[config.field]
-            ? -1
-            : 0
-        );
-      } else if (config.sortState === "des") {
-        tmpTblData = [...tbldata];
-      }
-
+      let tmpTblData = [...tbldata];
+      tmpTblData = sort(config, tmpTblData);
       setTblData(tmpTblData);
       sortedData(tmpTblData);
     },
-    [tblData, sortedData, tbldata]
+    [sortedData, tbldata]
   );
 
   return (
