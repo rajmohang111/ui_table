@@ -3,6 +3,14 @@
   margin-top: 10px;
 }
 
+.margin-left-0 {
+  margin-left: 0;
+}
+
+.border-bottom-0 {
+  border-bottom: 0px !important;
+}
+
 .selected-outer-checkbox {
   background: #5c50bb;
   border-radius: 8px;

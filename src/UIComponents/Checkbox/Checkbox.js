@@ -41,13 +41,9 @@ function Checkbox(props) {
 
   return (
     <div
-      className={
-        props.index === -1
-          ? `icon ${props.tblData.length - 1 === props.index && "noDivider"}`
-          : `iconCell ${
-              props.tblData.length - 1 === props.index && "noDivider"
-            }`
-      }
+      className={`iconCell ${
+        props.tblData.length - 1 === props.index && "noDivider"
+      } ${props.index === -1 && "border-bottom-0"}`}
     >
       <div
         className={
@@ -67,7 +63,7 @@ function Checkbox(props) {
       >
         <div className="inner-circle">
           {props.data?.isSelected ? (
-            <img className="tick" src={tick} alt="tick" />
+            <img className={`tick`} src={tick} alt="tick" />
           ) : (
             <></>
           )}
